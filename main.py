@@ -1,47 +1,40 @@
-from classEmail import Email 
+import csv
 from menu import Menu
+from ClaseEmail import Email
 import os
 
-def test():
-	print('''***** TEST ******
-Datos correctos a probar:
-correo.1@gmail.com, correo2@unsj.edu, matiaszotelo@yahoo.com
+def test () :
+    print('------ TEST ------')
+    print('datos a probar: \nDatos correctos: \ninformatica.fcefn@gmail.com, wicc2019@unsj-cuim.edu, juanLiendro1957@yahoo.com \n\nDatos incorrectos: \njulio3312gmail.com, ernesto@yahoo')
+    nuevotest= Email()
+    print('\n\n--- DATOS CORRECTOS')
+    print('informatica.fcefn@gmail.com')
+    nuevotest.crearCuenta('informatica.fcefn@gmail.com','contrasena1')
+    print('wicc2019@unsj-cuim.edu')
+    nuevotest.crearCuenta('wicc2019@unsj-cuim.edu','contrasena2')
+    print('juanLiendro1957@yahoo.com')
+    nuevotest.crearCuenta('juanLiendro1957@yahoo.com','contrasena3')
+    print('\n--- DATOS INCORRECTOS')
+    print('julio3312gmail.com')
+    nuevotest.crearCuenta('julio3312gmail.com','contrasena4')
+    print('ernesto@yahoo')
+    nuevotest.crearCuenta('ernesto@yahoo','contrasena5')
+    os.system('Pause')
+    os.system('cls')
 
-Datos incorrectos a probar:
-correo3gmail.com, corre4@yahoo''')
-	prueba = Email()
-	print('\n\n---> DATOS CORRECTOS')
-	print('correo.1@gmail.com')
-	prueba.crearCuenta('correo.1@gmail.com','contra1')
-	print('correo2@unsj.edu')
-	prueba.crearCuenta('correo2@unsj.edu','contra2')
-	print('matiaszotelo@outlook.com')
-	prueba.crearCuenta('matiaszotelo@outlok.com','contra3')
-	print('\n---> DATOS INCORRECTOS')
-	print('correo3gmail.com')
-	prueba.crearCuenta('correo3gmail.com','contra4')
-	print('corre4@yahoo')
-	prueba.crearCuenta('corre4@yahoo','contrasena5')
-	os.system('Pause')
-	os.system('cls')	
 
-op = int(input ("""
-Elija una opcion:
-1. Ejecutar test
-2. Ir al menu principal
-"""))
-if op == 1:
-	test()
-else:
-	print('---> Menu Principal<---')
-	op = int (input('''
-			Seleccione una opcion:
-			1. item 1
-			2. item 2
-			3. item 3
-			4. item 3
-			'''))
-	nuevoMail = Email()
-	xmenu = Menu()
-	xmenu.opcionesMenu(op, nuevoMail)
-#else: print ('opcion elegida incorrecta')
+if __name__ == '__main__':
+    
+    op=int (input('Desea ejecutar el test? \n 1 - SI \n 2 - NO\n'))
+    if op==1:
+        test()
+    nuevoMail= Email()
+    xmenu=Menu()
+    b=False
+    while not b:
+        print('----------- MENU')
+        op= int(input('Ingrese la opcion:\n1- Ingresar el nombre de una persona y su dirección de e-mail\n2- Cambiar la contrasena de la cuenta creada anteriormente\n3- Leer de un archivo\n4- Salir\n'))
+        if op != 4:
+            xmenu.manejoMenu(op,nuevoMail)
+        else:
+            b= True
